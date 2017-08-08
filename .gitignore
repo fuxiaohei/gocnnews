@@ -3,6 +3,9 @@
 *.dll
 *.so
 *.dylib
+*.tar.gz
+*.db
+gocnnews
 
 # Test binary, build with `go test -c`
 *.test
