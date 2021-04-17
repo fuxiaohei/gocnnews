@@ -133,6 +133,7 @@ func generateArticleNews(w http.ResponseWriter, r *http.Request) {
 }
 
 func Start() {
+	log.Println("[info]\t server listen: 0.0.0.0:49999")
 	err := http.ListenAndServe("0.0.0.0:49999", nil)
 	if err != nil {
 		log.Fatalln("[fatal]\t server : listen fail,", err)

@@ -23,16 +23,17 @@ func Reddit() []*model.Article {
 		log.Println("[error]\t reddit : read page fail,", err)
 		return nil
 	}
-	list := doc.Find("div.link div.entry")
+	list := doc.Find("div.Post article")
 	if list.Length() == 0 {
 		log.Println("[warn]\t reddit : find nothing")
 		return nil
 	}
+	log.Printf("[info]\t reddit : find %d", list.Length())
 	now := time.Now().Unix()
 	var articles []*model.Article
 	list.Each(func(_ int, sec *goquery.Selection) {
-		title := sec.Find("p.title a.title").Text()
-		url, _ := sec.Find("p.title a.title").Attr("href")
+		title := sec.Find(`a[data-click-id] h3`).Text()
+		url, _ := sec.Find("a[data-click-id]").Attr("href")
 		if title == "" || url == "" {
 			log.Println("[info]\t reddit : no title or url")
 			return

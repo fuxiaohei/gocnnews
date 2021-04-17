@@ -22,21 +22,22 @@ func Oschina() []*model.Article {
 		log.Println("[error]\t oschina : read page fail,", err)
 		return nil
 	}
-	list := doc.Find("div#topsOfNew .item")
+	list := doc.Find("div#recommendArticleList .blog-item")
 	if list.Length() == 0 {
 		log.Println("[warn]\t oschina : find nothing")
 		return nil
 	}
+	log.Printf("[info]\t oschina : find %d", list.Length())
 	now := time.Now().Unix()
 	var articles []*model.Article
 	list.Each(func(_ int, sec *goquery.Selection) {
-		title := sec.Find("a.blog-title-link h2").Text()
-		url, _ := sec.Find("a.blog-title-link").Attr("href")
+		title := sec.Find("a.header").Text()
+		url, _ := sec.Find("a.header").Attr("href")
 		if title == "" || url == "" {
 			log.Println("[info]\t oschina : no title or url")
 			return
 		}
-		content := sec.Find("section.blog-brief").Text()
+		content := sec.Find(".description").Text()
 		a := &model.Article{
 			URL:        url,
 			Title:      title,

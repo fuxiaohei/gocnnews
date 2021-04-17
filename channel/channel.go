@@ -7,7 +7,8 @@ type ChannelFunc func() []*model.Article
 var Channels []ChannelFunc
 
 func init() {
-	Channels = append(Channels, Hexacosa)
+	// # Channels = append(Channels, Hexacosa)
+
 	Channels = append(Channels, Golangnews)
 	Channels = append(Channels, Juejin)
 	Channels = append(Channels, Oschina)

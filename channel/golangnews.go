@@ -28,6 +28,7 @@ func Golangnews() []*model.Article {
 		log.Println("[warn]\t golangnews : find nothing")
 		return nil
 	}
+	log.Printf("[info]\t golangnews : find %d", list.Length())
 	now := time.Now().Unix()
 	var articles []*model.Article
 	list.Each(func(_ int, sec *goquery.Selection) {

@@ -27,6 +27,7 @@ func Hacknews() []*model.Article {
 		log.Println("[warn]\t hacknews : find nothing")
 		return nil
 	}
+	log.Printf("[info]\t hacknews : find %d", list.Length())
 	now := time.Now().Unix()
 	var articles []*model.Article
 	list.Each(func(_ int, sec *goquery.Selection) {

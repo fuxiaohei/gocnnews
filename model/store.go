@@ -32,7 +32,7 @@ func Init() {
 
 var (
 	selectHashSQL = "SELECT id FROM news WHERE hash = ?"
-	insertSQL     = " INSERT INTO news(title,url,fromsite,content,hash,access) VALUES(?,?,?,?,?,?)"
+	insertSQL     = "INSERT INTO news(title,url,fromsite,content,hash,access) VALUES(?,?,?,?,?,?)"
 	selectSQL     = "SELECT title,url,fromsite,access,marked,id,hash FROM news WHERE access >= ? and marked >= ? ORDER BY id DESC"
 	updateMarkSQL = "UPDATE news SET marked = ? WHERE id = ? AND hash = ?"
 )
@@ -62,8 +62,7 @@ func saveArticle(article *Article) {
 		return
 	}
 	lastID, _ := res.LastInsertId()
-	log.Println("[info]\t db:save new,", lastID, article.Title, article.From)
-	return
+	log.Println("[info]\t db:save new,", lastID, article.Title, "("+article.From+")")
 }
 
 func ListArticles(access, status int64) []*Article {

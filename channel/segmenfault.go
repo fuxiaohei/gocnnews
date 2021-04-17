@@ -22,16 +22,17 @@ func Segmentfault() []*model.Article {
 		log.Println("[error]\t segmentfault : read page fail,", err)
 		return nil
 	}
-	list := doc.Find("section.stream-list__item")
+	list := doc.Find(".content-list-wrap .item-wrap div.content")
 	if list.Length() == 0 {
 		log.Println("[warn]\t segmentfault : find nothing")
 		return nil
 	}
+	log.Printf("[info]\t segmentfault : find %d", list.Length())
 	now := time.Now().Unix()
 	var articles []*model.Article
 	list.Each(func(_ int, sec *goquery.Selection) {
-		title := sec.Find("h2.title").Text()
-		url, _ := sec.Find("h2.title a").Attr("href")
+		title := sec.Find("h5").Text()
+		url, _ := sec.Find("h5 a").Attr("href")
 		if title == "" || url == "" {
 			log.Println("[info]\t segmentfault : no title or url")
 			return
