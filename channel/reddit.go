@@ -5,8 +5,9 @@ import (
 	"strings"
 	"time"
 
+	"gocnnews/model"
+
 	"github.com/PuerkitoBio/goquery"
-	"github.com/gocnnews/model"
 )
 
 func Reddit() []*model.Article {

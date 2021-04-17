@@ -1,6 +1,6 @@
 package channel
 
-import "github.com/gocnnews/model"
+import "gocnnews/model"
 
 type ChannelFunc func() []*model.Article
 

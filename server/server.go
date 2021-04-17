@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gocnnews/model"
+	"gocnnews/model"
 )
 
 var majorWords = []string{"go", "golang", "docker", "grpc", "微服务", "k8s", "kubernetes"}

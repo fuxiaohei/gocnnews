@@ -5,9 +5,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gocnnews/channel"
-	"github.com/gocnnews/model"
-	"github.com/gocnnews/server"
+	"gocnnews/channel"
+	"gocnnews/model"
+	"gocnnews/server"
 )
 
 func main() {

@@ -4,8 +4,9 @@ import (
 	"log"
 	"time"
 
+	"gocnnews/model"
+
 	"github.com/PuerkitoBio/goquery"
-	"github.com/gocnnews/model"
 )
 
 func Segmentfault() []*model.Article {
